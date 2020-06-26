@@ -27,6 +27,8 @@ class BleViewController: UIViewController {
     }
 
     func bind(){
+        bleTableView.delegate = self
+        bleTableView.dataSource = self
         scanButton.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
     }
 
