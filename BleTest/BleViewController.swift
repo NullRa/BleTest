@@ -11,6 +11,7 @@ import UIKit
 class BleViewController: UIViewController {
 
     var bleArray:[String] = []
+    var bleManager = BLEManager.shared
 
     @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var bleTableView: UITableView!
@@ -26,7 +27,22 @@ class BleViewController: UIViewController {
     }
 
     func bind(){
+        scanButton.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
+    }
 
+    @objc func scanButtonAction(){
+        bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: "")
+        //2. 5秒後停止掃描，並呼叫重置tableView的func
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+            self.bleManager.stopScan()
+            self.reloadBleTableView()
+        }
+    }
+
+    //1. 先來完成重置bleTableView的功能
+    func reloadBleTableView(){
+        bleArray = bleManager.getDeviceNameArray()
+        bleTableView.reloadData()
     }
 }
 
