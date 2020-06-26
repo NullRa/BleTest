@@ -32,14 +32,12 @@ class BleViewController: UIViewController {
 
     @objc func scanButtonAction(){
         bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: "")
-        //2. 5秒後停止掃描，並呼叫重置tableView的func
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
             self.bleManager.stopScan()
             self.reloadBleTableView()
         }
     }
 
-    //1. 先來完成重置bleTableView的功能
     func reloadBleTableView(){
         bleArray = bleManager.getDeviceNameArray()
         bleTableView.reloadData()
