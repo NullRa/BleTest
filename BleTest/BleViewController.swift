@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BleViewController: UIViewController {
-
-    var bleArray:[String] = []
-    var bleManager = BLEManager.shared
-
     @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var bleTableView: UITableView!
+
+    var bleViewModel: BleViewModel!
+    var disposeBag = DisposeBag()
+    let bleArrayRelay = BehaviorRelay<[String]>(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +29,14 @@ class BleViewController: UIViewController {
     }
 
     func bind(){
-        bleTableView.delegate = self
-        bleTableView.dataSource = self
-        scanButton.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
+        bleViewModel = BleViewModel(bleArrayRelay: bleArrayRelay)
+        scanButton.rx.tap.subscribe(onNext:{[weak self] in
+            guard let s = self else {return}
+            s.bleViewModel.scanDevice(deviceName: "")
+            }).disposed(by: disposeBag)
+
+        bleArrayRelay.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
+            cell.textLabel?.text = model
+                 }.disposed(by: self.disposeBag)
     }
-
-    @objc func scanButtonAction(){
-        bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: "")
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-            self.bleManager.stopScan()
-            self.reloadBleTableView()
-        }
-    }
-
-    func reloadBleTableView(){
-        bleArray = bleManager.getDeviceNameArray()
-        bleTableView.reloadData()
-    }
-}
-
-
-extension BleViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bleArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bleCell", for: indexPath)
-        cell.textLabel?.text = bleArray[indexPath.row]
-        return cell
-    }
-
-
 }
