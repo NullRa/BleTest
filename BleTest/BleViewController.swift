@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BleViewController: UIViewController {
     @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var bleTableView: UITableView!
 
     var bleViewModel: BleViewModel!
+    var disposeBag = DisposeBag()
+    let relay = BehaviorRelay<[String]>(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,37 +29,22 @@ class BleViewController: UIViewController {
     }
 
     func bind(){
-        bleViewModel = BleViewModel(bleViewController: self)
-        bleTableView.delegate = self
-        bleTableView.dataSource = self
-        scanButton.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
-    }
+        bleViewModel = BleViewModel(bleArrayRelay: relay)
+        scanButton.rx.tap.subscribe(onNext:{[weak self] in
+            guard let s = self else {return}
+            s.bleViewModel.scanDeviceName(deviceName: "")
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+                s.bleViewModel.stopScan()
+                s.reloadBleTableView()
+            }
+            }).disposed(by: disposeBag)
 
-    @objc func scanButtonAction(){
-        bleViewModel.scanDeviceName(deviceName: "")
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-            self.bleViewModel.stopScan()
-            self.reloadBleTableView()
-        }
+        relay.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
+            cell.textLabel?.text = model
+                 }.disposed(by: self.disposeBag)
     }
 
     func reloadBleTableView(){
         bleViewModel.getDeviceNameArray()
-        bleTableView.reloadData()
     }
-}
-
-
-extension BleViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bleViewModel.bleArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bleCell", for: indexPath)
-        cell.textLabel?.text = bleViewModel.bleArray[indexPath.row]
-        return cell
-    }
-
-
 }

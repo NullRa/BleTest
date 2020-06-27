@@ -16,7 +16,6 @@
 		6936F66024A5F7A7009D09EA /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936F65F24A5F7A7009D09EA /* BleManager.swift */; };
 		6936F66224A719FA009D09EA /* BleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936F66124A719FA009D09EA /* BleViewModel.swift */; };
 		6936F66724A72CA9009D09EA /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66624A72CA9009D09EA /* RxSwift */; };
-		6936F66924A72CA9009D09EA /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66824A72CA9009D09EA /* RxTest */; };
 		6936F66B24A72CA9009D09EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66A24A72CA9009D09EA /* RxRelay */; };
 		6936F66D24A72CA9009D09EA /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66C24A72CA9009D09EA /* RxCocoa */; };
 		6936F66F24A72CA9009D09EA /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66E24A72CA9009D09EA /* RxBlocking */; };
@@ -41,7 +40,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6936F66B24A72CA9009D09EA /* RxRelay in Frameworks */,
-				6936F66924A72CA9009D09EA /* RxTest in Frameworks */,
 				6936F66D24A72CA9009D09EA /* RxCocoa in Frameworks */,
 				6936F66724A72CA9009D09EA /* RxSwift in Frameworks */,
 				6936F66F24A72CA9009D09EA /* RxBlocking in Frameworks */,
@@ -101,7 +99,6 @@
 			name = BleTest;
 			packageProductDependencies = (
 				6936F66624A72CA9009D09EA /* RxSwift */,
-				6936F66824A72CA9009D09EA /* RxTest */,
 				6936F66A24A72CA9009D09EA /* RxRelay */,
 				6936F66C24A72CA9009D09EA /* RxCocoa */,
 				6936F66E24A72CA9009D09EA /* RxBlocking */,
@@ -230,6 +227,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -290,6 +288,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -314,6 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KH3PA94KG7;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				INFOPLIST_FILE = BleTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -333,6 +333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KH3PA94KG7;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				INFOPLIST_FILE = BleTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -374,7 +375,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 5.1.1;
 			};
 		};
@@ -385,11 +386,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		6936F66824A72CA9009D09EA /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
 		};
 		6936F66A24A72CA9009D09EA /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;

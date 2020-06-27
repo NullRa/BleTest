@@ -6,14 +6,15 @@
 //  Copyright © 2020 Null. All rights reserved.
 //
 
+import RxSwift
+import RxCocoa
 class BleViewModel {
-    let bleVC: BleViewController!
-    var bleManager = BLEManager.shared
+    let bleManager = BLEManager.shared
+    let bleArray: BehaviorRelay<[String]>
 
-    var bleArray:[String] = []
-    
-    init(bleViewController: BleViewController){
-        bleVC = bleViewController
+    init(bleArrayRelay:BehaviorRelay<[String]>){
+        bleArray = bleArrayRelay
+        bleArray.accept([])
     }
 
     func scanDeviceName(deviceName:String){
@@ -25,6 +26,6 @@ class BleViewModel {
     }
     
     func getDeviceNameArray(){
-        bleArray = bleManager.getDeviceNameArray()
+        bleArray.accept(bleManager.getDeviceNameArray())
     }
 }
