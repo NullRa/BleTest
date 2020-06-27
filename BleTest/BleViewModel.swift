@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import Foundation
 class BleViewModel {
     let bleManager = BLEManager.shared
     let bleArray: BehaviorRelay<[String]>
@@ -17,15 +18,11 @@ class BleViewModel {
         bleArray.accept([])
     }
 
-    func scanDeviceName(deviceName:String){
+    func scanDevice(deviceName:String){
         bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: deviceName)
-    }
-
-    func stopScan(){
-        bleManager.stopScan()
-    }
-    
-    func getDeviceNameArray(){
-        bleArray.accept(bleManager.getDeviceNameArray())
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+            self.bleManager.stopScan()
+            self.bleArray.accept(self.bleManager.getDeviceNameArray())
+        }
     }
 }

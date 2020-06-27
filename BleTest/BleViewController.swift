@@ -16,7 +16,7 @@ class BleViewController: UIViewController {
 
     var bleViewModel: BleViewModel!
     var disposeBag = DisposeBag()
-    let relay = BehaviorRelay<[String]>(value: [])
+    let bleArrayRelay = BehaviorRelay<[String]>(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +29,14 @@ class BleViewController: UIViewController {
     }
 
     func bind(){
-        bleViewModel = BleViewModel(bleArrayRelay: relay)
+        bleViewModel = BleViewModel(bleArrayRelay: bleArrayRelay)
         scanButton.rx.tap.subscribe(onNext:{[weak self] in
             guard let s = self else {return}
-            s.bleViewModel.scanDeviceName(deviceName: "")
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-                s.bleViewModel.stopScan()
-                s.reloadBleTableView()
-            }
+            s.bleViewModel.scanDevice(deviceName: "")
             }).disposed(by: disposeBag)
 
-        relay.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
+        bleArrayRelay.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
             cell.textLabel?.text = model
                  }.disposed(by: self.disposeBag)
-    }
-
-    func reloadBleTableView(){
-        bleViewModel.getDeviceNameArray()
     }
 }
