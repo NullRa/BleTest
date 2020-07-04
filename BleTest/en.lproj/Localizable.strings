@@ -8,3 +8,7 @@
 "SCAN" = "SCAN";
 "Scan..." = "Scan...";
 "Wait..." = "Wait...";
+"Enter device name" = "Enter device name";
+"Search all device without enter" = "Search all device without enter";
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
