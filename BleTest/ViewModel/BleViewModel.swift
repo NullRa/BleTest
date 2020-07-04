@@ -13,8 +13,16 @@ class BleViewModel {
     let bleManager = BLEManager.shared
     let bleArray = BehaviorRelay<[String]>(value: [])
     let showLoadingSubject = PublishSubject<Bool>()
+    let bleStateSubject = PublishSubject<BleState>()
+    let scanButtonEnabled:Observable<Bool>
+    init(){
+        scanButtonEnabled = bleStateSubject.asObservable().map{
+            state in
+            return state == .poweredOn
+        }.share(replay: 1)
 
-    init(){}
+        bleManager.delegate = self
+    }
 
     func scanDevice(deviceName:String){
         showLoadingSubject.onNext(true)
@@ -25,4 +33,17 @@ class BleViewModel {
             self.showLoadingSubject.onNext(false)
         }
     }
+}
+
+extension BleViewModel: BleManagerDelegate {
+    func setBleState(state: BleState) {
+        bleStateSubject.onNext(state)
+    }
+}
+
+enum BleState: String{
+    case poweredOn
+    case unauthorized
+    case poweredOff
+    case unknown
 }

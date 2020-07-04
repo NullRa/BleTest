@@ -30,16 +30,16 @@ class BleViewController: UIViewController {
     }
 
     func scanAction(){
-        let alert = UIAlertController(title: "輸入搜尋設備名稱", message: "空白即搜尋所有設備", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "確定", style: .default) { (_) in
+        let alert = UIAlertController(title: "Enter device name".localized, message: "Search all device without enter".localized, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Confirm".localized, style: .default) { (_) in
             guard let deviceNameTextField = alert.textFields?.first else {
                 return
             }
             self.bleViewModel.scanDevice(deviceName: deviceNameTextField.text ?? "")
         }
         alert.addTextField { (textField) in
-            textField.placeholder = "輸入搜尋設備名稱"
+            textField.placeholder = "Enter device name".localized
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
@@ -70,5 +70,30 @@ class BleViewController: UIViewController {
                     }
                 }
             }).disposed(by: self.disposeBag)
+
+        bleViewModel.bleStateSubject
+            .subscribe(onNext:{
+                state in
+                switch state {
+                case .poweredOn:
+                    print("powerOn")
+                case .poweredOff:
+                    print("powerOff")
+                    self.presentAlert(title: "Ble power off", message: nil)
+                case .unauthorized:
+                    print("unauthorized")
+                    self.presentAlert(title: "Ble unauthiruzed", message: nil)
+                case .unknown:
+                    print("unknown")
+                    self.presentAlert(title: "Ble state unknow", message: nil)
+                }
+            }).disposed(by: disposeBag)
+
+        bleViewModel.scanButtonEnabled
+            .subscribe(onNext: {
+                [weak self] in
+                self?.scanButton.isEnabled = $0
+                self?.scanButton.alpha = $0 ? 1 : 0.5
+               }).disposed(by: disposeBag)
     }
 }
