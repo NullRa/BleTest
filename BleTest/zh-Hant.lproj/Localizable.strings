@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  BleTest
+
+  Created by Jay on 2020/7/4.
+  Copyright © 2020 Null. All rights reserved.
+*/
+"SCAN" = "掃描";
+"Scan..." = "掃描中...";
+"Wait..." = "稍等...";

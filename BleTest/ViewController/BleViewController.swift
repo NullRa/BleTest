@@ -26,6 +26,7 @@ class BleViewController: UIViewController {
 
     func initUI(){
         bleTableView.tableFooterView = UIView()
+        scanButton.setTitle("SCAN".localized, for: .normal)
     }
 
     func bind(){
@@ -45,7 +46,7 @@ class BleViewController: UIViewController {
                 showLoading in
                 if showLoading {
                     DispatchQueue.main.async {
-                        self.hud.showSimpleHUD(toView: self.view, text: "Scan..", detailText: "Wait..")
+                        self.hud.showSimpleHUD(toView: self.view, text: "Scan...".localized, detailText: "Wait...".localized)
                     }
                 } else {
                     if self.hud.hud != nil {
