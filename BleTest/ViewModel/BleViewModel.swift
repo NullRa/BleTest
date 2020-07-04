@@ -12,14 +12,17 @@ import Foundation
 class BleViewModel {
     let bleManager = BLEManager.shared
     let bleArray = BehaviorRelay<[String]>(value: [])
+    let showLoadingSubject = PublishSubject<Bool>()
 
     init(){}
 
     func scanDevice(deviceName:String){
+        showLoadingSubject.onNext(true)
         bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: deviceName)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
             self.bleManager.stopScan()
             self.bleArray.accept(self.bleManager.getDeviceNameArray())
+            self.showLoadingSubject.onNext(false)
         }
     }
 }

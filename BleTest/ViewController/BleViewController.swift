@@ -34,10 +34,24 @@ class BleViewController: UIViewController {
         scanButton.rx.tap.subscribe(onNext:{[weak self] in
             guard let s = self else {return}
             s.bleViewModel.scanDevice(deviceName: "")
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
 
         bleViewModel.bleArray.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
-        cell.textLabel?.text = model
-             }.disposed(by: self.disposeBag)
+            cell.textLabel?.text = model
+        }.disposed(by: self.disposeBag)
+
+        bleViewModel.showLoadingSubject
+            .subscribe(onNext:{
+                showLoading in
+                if showLoading {
+                    DispatchQueue.main.async {
+                        self.hud.showSimpleHUD(toView: self.view, text: "Scan..", detailText: "Wait..")
+                    }
+                } else {
+                    if self.hud.hud != nil {
+                        self.hud.hideHUD()
+                    }
+                }
+            }).disposed(by: self.disposeBag)
     }
 }
