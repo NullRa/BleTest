@@ -11,12 +11,9 @@ import RxCocoa
 import Foundation
 class BleViewModel {
     let bleManager = BLEManager.shared
-    let bleArray: BehaviorRelay<[String]>
+    let bleArray = BehaviorRelay<[String]>(value: [])
 
-    init(bleArrayRelay:BehaviorRelay<[String]>){
-        bleArray = bleArrayRelay
-        bleArray.accept([])
-    }
+    init(){}
 
     func scanDevice(deviceName:String){
         bleManager.scanForPeripheralsWithServices(nil, options: nil, deviceName: deviceName)
