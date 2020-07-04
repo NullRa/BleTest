@@ -16,6 +16,7 @@ class BleViewController: UIViewController {
 
     var bleViewModel: BleViewModel!
     var disposeBag = DisposeBag()
+    var hud = HudManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
