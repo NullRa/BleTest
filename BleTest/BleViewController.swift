@@ -23,7 +23,9 @@ class BleViewController: UIViewController {
         bind()
     }
 
-    func initUI(){}
+    func initUI(){
+        bleTableView.tableFooterView = UIView()
+    }
 
     func bind(){
         bleViewModel = BleViewModel()
