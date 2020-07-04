@@ -29,12 +29,28 @@ class BleViewController: UIViewController {
         scanButton.setTitle("SCAN".localized, for: .normal)
     }
 
+    func scanAction(){
+        let alert = UIAlertController(title: "輸入搜尋設備名稱", message: "空白即搜尋所有設備", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "確定", style: .default) { (_) in
+            guard let deviceNameTextField = alert.textFields?.first else {
+                return
+            }
+            self.bleViewModel.scanDevice(deviceName: deviceNameTextField.text ?? "")
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "輸入搜尋設備名稱"
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     func bind(){
         bleViewModel = BleViewModel()
 
         scanButton.rx.tap.subscribe(onNext:{[weak self] in
             guard let s = self else {return}
-            s.bleViewModel.scanDevice(deviceName: "")
+            s.scanAction()
         }).disposed(by: disposeBag)
 
         bleViewModel.bleArray.bind(to: self.bleTableView.rx.items(cellIdentifier: "bleCell", cellType: UITableViewCell.self)) { index, model, cell in
