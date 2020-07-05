@@ -10,7 +10,9 @@
 //https://www.itread01.com/content/1550073243.html
 //參考上面連結實作，這篇真的寫得很好。
 import CoreBluetooth
-
+protocol BleManagerDelegate: class {
+    func setBleState(state:BleState)
+}
 class BLEManager: NSObject {
     //單例物件
     static let shared = BLEManager()
@@ -25,6 +27,8 @@ class BLEManager: NSObject {
     //可以用下面兩種方式來搜尋設備
     //    let servicesUUID : [CBUUID] = [CBUUID.init(string: "servicesUUIDs")]
     var deviceName: String?
+
+    var delegate: BleManagerDelegate?
 
     override init() {
         super.init()
@@ -68,6 +72,19 @@ class BLEManager: NSObject {
         }
         return nameArray
     }
+
+    func requestConnect(deviceName: String){
+        guard let bleArray = deviceList as? [CBPeripheral] else {
+            print("no device can connect..")
+            return
+        }
+        for value in bleArray {
+            if value.name == deviceName {
+                requestConnectPeripheral(value)
+            }
+        }
+
+    }
 }
 
 extension BLEManager: CBCentralManagerDelegate{
@@ -76,12 +93,16 @@ extension BLEManager: CBCentralManagerDelegate{
         switch central.state {
         case .poweredOn:
             print("藍牙開啟")
+            delegate?.setBleState(state: .poweredOn)
         case .unauthorized:
             print("沒有藍芽功能")
+            delegate?.setBleState(state: .unauthorized)
         case .poweredOff:
             print("藍牙關閉")
+            delegate?.setBleState(state: .poweredOff)
         default:
             print("未知狀態")
+            delegate?.setBleState(state: .unknown)
         }
         // 手機藍芽狀態發生變化，可以傳送通知出去。提示使用者
     }

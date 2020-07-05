@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BleTest
+
+  Created by Jay on 2020/7/4.
+  Copyright © 2020 Null. All rights reserved.
+*/
+"SCAN" = "掃描";
+"Scan..." = "掃描中...";
+"Wait..." = "稍等...";
+"Enter device name" = "輸入搜尋設備名稱";
+"Search all device without enter" = "空白即搜尋所有設備";
+"Cancel" = "取消";
+"Confirm" = "確定";

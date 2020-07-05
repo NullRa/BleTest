@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BleTest
+
+  Created by Jay on 2020/7/4.
+  Copyright © 2020 Null. All rights reserved.
+*/
+"SCAN" = "SCAN";
+"Scan..." = "Scan...";
+"Wait..." = "Wait...";
+"Enter device name" = "Enter device name";
+"Search all device without enter" = "Search all device without enter";
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
