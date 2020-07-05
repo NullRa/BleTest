@@ -72,6 +72,19 @@ class BLEManager: NSObject {
         }
         return nameArray
     }
+
+    func requestConnect(deviceName: String){
+        guard let bleArray = deviceList as? [CBPeripheral] else {
+            print("no device can connect..")
+            return
+        }
+        for value in bleArray {
+            if value.name == deviceName {
+                requestConnectPeripheral(value)
+            }
+        }
+
+    }
 }
 
 extension BLEManager: CBCentralManagerDelegate{

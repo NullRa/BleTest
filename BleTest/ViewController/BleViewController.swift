@@ -57,6 +57,24 @@ class BleViewController: UIViewController {
             cell.textLabel?.text = model
         }.disposed(by: self.disposeBag)
 
+        //取得index
+        bleTableView.rx.itemSelected.subscribe(onNext:{
+            [weak self]indexPath in
+            guard let s = self else {return}
+            let bleIndex = indexPath.row
+            let deviceName = s.bleViewModel.getDeviceName(index: bleIndex)
+
+            let actions = [
+                UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil),
+                UIAlertAction(title: "Confirm".localized, style: .default, handler: { _ in
+                    print("device: \(deviceName)")
+                    self?.bleViewModel.connectBLE(index: bleIndex)
+                })
+            ]
+            s.presentAlert(title: "連接裝置", message: "裝置: \(deviceName)", actions: actions)
+
+        }).disposed(by: disposeBag)
+
         bleViewModel.showLoadingSubject
             .subscribe(onNext:{
                 showLoading in

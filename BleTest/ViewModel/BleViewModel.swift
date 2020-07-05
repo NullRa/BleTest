@@ -33,6 +33,15 @@ class BleViewModel {
             self.showLoadingSubject.onNext(false)
         }
     }
+
+    func getDeviceName(index:Int)->String{
+           return bleArray.value[index]
+    }
+
+    func connectBLE(index:Int){
+        let deviceName = bleArray.value[index]
+        bleManager.requestConnect(deviceName: deviceName)
+    }
 }
 
 extension BleViewModel: BleManagerDelegate {
