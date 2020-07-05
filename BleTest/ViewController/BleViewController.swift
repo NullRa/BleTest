@@ -18,6 +18,15 @@ class BleViewController: UIViewController {
     var disposeBag = DisposeBag()
     var hud = HudManager.shared
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bleViewModel.startDetectShaking()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        bleViewModel.stopDetectShaking()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -112,6 +121,13 @@ class BleViewController: UIViewController {
                 [weak self] in
                 self?.scanButton.isEnabled = $0
                 self?.scanButton.alpha = $0 ? 1 : 0.5
-               }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+
+        bleViewModel.isShakingSubject
+            .filter{ $0 }
+            .subscribe(onNext: {
+                _ in
+                self.bleViewModel.scanDevice(deviceName: "")
+            }).disposed(by: disposeBag)
     }
 }
