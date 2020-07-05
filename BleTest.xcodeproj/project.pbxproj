@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,18 @@
 		6936F65524A5F091009D09EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6936F65424A5F091009D09EA /* Assets.xcassets */; };
 		6936F65824A5F091009D09EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6936F65624A5F091009D09EA /* LaunchScreen.storyboard */; };
 		6936F66024A5F7A7009D09EA /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936F65F24A5F7A7009D09EA /* BleManager.swift */; };
+		6936F66224A719FA009D09EA /* BleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936F66124A719FA009D09EA /* BleViewModel.swift */; };
+		6936F66724A72CA9009D09EA /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66624A72CA9009D09EA /* RxSwift */; };
+		6936F66B24A72CA9009D09EA /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66A24A72CA9009D09EA /* RxRelay */; };
+		6936F66D24A72CA9009D09EA /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66C24A72CA9009D09EA /* RxCocoa */; };
+		6936F66F24A72CA9009D09EA /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 6936F66E24A72CA9009D09EA /* RxBlocking */; };
+		695AA59E24B05B4C009D1CF9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695AA59D24B05B4C009D1CF9 /* String.swift */; };
+		695AA5A324B05B96009D1CF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 695AA5A524B05B96009D1CF9 /* Localizable.strings */; };
+		695AA5A924B05E71009D1CF9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 695AA5AB24B05E71009D1CF9 /* InfoPlist.strings */; };
+		695AA5AE24B0B9B2009D1CF9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695AA5AD24B0B9B2009D1CF9 /* UIViewController.swift */; };
+		695AA5B024B1D7F4009D1CF9 /* ShakingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695AA5AF24B1D7F4009D1CF9 /* ShakingManager.swift */; };
+		699DEB6F24B04D6400523DB1 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 699DEB6E24B04D6400523DB1 /* MBProgressHUD */; };
+		699DEB7424B04DDC00523DB1 /* HudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DEB7324B04DDC00523DB1 /* HudManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +38,17 @@
 		6936F65724A5F091009D09EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6936F65924A5F091009D09EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6936F65F24A5F7A7009D09EA /* BleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManager.swift; sourceTree = "<group>"; };
+		6936F66124A719FA009D09EA /* BleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleViewModel.swift; sourceTree = "<group>"; };
+		695AA59D24B05B4C009D1CF9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		695AA59F24B05B72009D1CF9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		695AA5A024B05B73009D1CF9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		695AA5A424B05B96009D1CF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		695AA5A624B05BD9009D1CF9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		695AA5AA24B05E71009D1CF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		695AA5AC24B05E73009D1CF9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		695AA5AD24B0B9B2009D1CF9 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		695AA5AF24B1D7F4009D1CF9 /* ShakingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingManager.swift; sourceTree = "<group>"; };
+		699DEB7324B04DDC00523DB1 /* HudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +56,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6936F66B24A72CA9009D09EA /* RxRelay in Frameworks */,
+				6936F66D24A72CA9009D09EA /* RxCocoa in Frameworks */,
+				699DEB6F24B04D6400523DB1 /* MBProgressHUD in Frameworks */,
+				6936F66724A72CA9009D09EA /* RxSwift in Frameworks */,
+				6936F66F24A72CA9009D09EA /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,16 +86,55 @@
 		6936F64A24A5F08D009D09EA /* BleTest */ = {
 			isa = PBXGroup;
 			children = (
+				695AA59C24B05A5B009D1CF9 /* Extension */,
+				699DEB7224B04DBA00523DB1 /* Manager */,
+				699DEB7124B04DA000523DB1 /* ViewModel */,
+				699DEB7024B04D8900523DB1 /* ViewController */,
 				6936F64B24A5F08D009D09EA /* AppDelegate.swift */,
 				6936F64D24A5F08D009D09EA /* SceneDelegate.swift */,
-				6936F64F24A5F08D009D09EA /* BleViewController.swift */,
 				6936F65124A5F08D009D09EA /* Main.storyboard */,
-				6936F65F24A5F7A7009D09EA /* BleManager.swift */,
 				6936F65424A5F091009D09EA /* Assets.xcassets */,
 				6936F65624A5F091009D09EA /* LaunchScreen.storyboard */,
 				6936F65924A5F091009D09EA /* Info.plist */,
+				695AA5A524B05B96009D1CF9 /* Localizable.strings */,
+				695AA5AB24B05E71009D1CF9 /* InfoPlist.strings */,
 			);
 			path = BleTest;
+			sourceTree = "<group>";
+		};
+		695AA59C24B05A5B009D1CF9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				695AA59D24B05B4C009D1CF9 /* String.swift */,
+				695AA5AD24B0B9B2009D1CF9 /* UIViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		699DEB7024B04D8900523DB1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6936F64F24A5F08D009D09EA /* BleViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		699DEB7124B04DA000523DB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6936F66124A719FA009D09EA /* BleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		699DEB7224B04DBA00523DB1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6936F65F24A5F7A7009D09EA /* BleManager.swift */,
+				699DEB7324B04DDC00523DB1 /* HudManager.swift */,
+				695AA5AF24B1D7F4009D1CF9 /* ShakingManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +153,13 @@
 			dependencies = (
 			);
 			name = BleTest;
+			packageProductDependencies = (
+				6936F66624A72CA9009D09EA /* RxSwift */,
+				6936F66A24A72CA9009D09EA /* RxRelay */,
+				6936F66C24A72CA9009D09EA /* RxCocoa */,
+				6936F66E24A72CA9009D09EA /* RxBlocking */,
+				699DEB6E24B04D6400523DB1 /* MBProgressHUD */,
+			);
 			productName = BleTest;
 			productReference = 6936F64824A5F08D009D09EA /* BleTest.app */;
 			productType = "com.apple.product-type.application";
@@ -112,8 +186,13 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 6936F63F24A5F08D009D09EA;
+			packageReferences = (
+				6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */,
+				699DEB6D24B04D6400523DB1 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			productRefGroup = 6936F64924A5F08D009D09EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,8 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6936F65824A5F091009D09EA /* LaunchScreen.storyboard in Resources */,
+				695AA5A324B05B96009D1CF9 /* Localizable.strings in Resources */,
 				6936F65524A5F091009D09EA /* Assets.xcassets in Resources */,
 				6936F65324A5F08D009D09EA /* Main.storyboard in Resources */,
+				695AA5A924B05E71009D1CF9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +223,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6936F65024A5F08D009D09EA /* BleViewController.swift in Sources */,
+				6936F66224A719FA009D09EA /* BleViewModel.swift in Sources */,
 				6936F66024A5F7A7009D09EA /* BleManager.swift in Sources */,
+				699DEB7424B04DDC00523DB1 /* HudManager.swift in Sources */,
+				695AA59E24B05B4C009D1CF9 /* String.swift in Sources */,
+				695AA5B024B1D7F4009D1CF9 /* ShakingManager.swift in Sources */,
 				6936F64C24A5F08D009D09EA /* AppDelegate.swift in Sources */,
+				695AA5AE24B0B9B2009D1CF9 /* UIViewController.swift in Sources */,
 				6936F64E24A5F08D009D09EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +241,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6936F65224A5F08D009D09EA /* Base */,
+				695AA59F24B05B72009D1CF9 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -163,8 +250,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				6936F65724A5F091009D09EA /* Base */,
+				695AA5A024B05B73009D1CF9 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		695AA5A524B05B96009D1CF9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				695AA5A424B05B96009D1CF9 /* en */,
+				695AA5A624B05BD9009D1CF9 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		695AA5AB24B05E71009D1CF9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				695AA5AA24B05E71009D1CF9 /* en */,
+				695AA5AC24B05E73009D1CF9 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -174,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -206,6 +313,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -234,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -266,6 +375,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -290,11 +400,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KH3PA94KG7;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				INFOPLIST_FILE = BleTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Rat.BleTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -308,11 +420,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KH3PA94KG7;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				INFOPLIST_FILE = BleTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Rat.BleTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -342,6 +456,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		699DEB6D24B04D6400523DB1 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6936F66624A72CA9009D09EA /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		6936F66A24A72CA9009D09EA /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		6936F66C24A72CA9009D09EA /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		6936F66E24A72CA9009D09EA /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6936F66524A72CA9009D09EA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		699DEB6E24B04D6400523DB1 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 699DEB6D24B04D6400523DB1 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6936F64024A5F08D009D09EA /* Project object */;
 }

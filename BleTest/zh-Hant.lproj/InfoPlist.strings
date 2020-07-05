@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  BleTest
+
+  Created by Jay on 2020/7/4.
+  Copyright © 2020 Null. All rights reserved.
+*/
+"CFBundleDisplayName" = "藍牙測試";
